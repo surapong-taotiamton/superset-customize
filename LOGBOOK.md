@@ -15,3 +15,23 @@
 ```
 superset/templates/appbuilder/general/security/login_db.html
 ```
+
+### วิธีการ Start app ทั้งหน้าบ้านและหลังบ้านขึ้นมา
+
+ทำตาม Link ด้านล่าง
+
+https://preset.io/blog/tutorial-contributing-code-to-apache-superset/
+
+
+
+```
+FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger
+```
+
+### Customize Frontend หลัง Login เข้าไปแล้ว
+
+Superset ใช้ React ในการเขียน Frontend โดยไฟล์ส่วนใหญ่จะอยู่ใน
+
+```
+superset-frontend/src/pages/Home/index.tsx
+```
