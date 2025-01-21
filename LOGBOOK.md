@@ -35,3 +35,13 @@ Superset ใช้ React ในการเขียน Frontend โดยไฟ
 ```
 superset-frontend/src/pages/Home/index.tsx
 ```
+
+## 2025-01-21
+
+### หาวิธีเพิ่มค่าเข้าไปใน Dashboard 
+
+เราสามารถเพิ่มค่าเข้าไปใน Dashboard properties ตรง Advance 
+
+![](logbook-resource/2024-01-21/001.png)
+
+จะมี field ชื่อ global_chart_configuration ฟิลล์นี้เราสามารถเพิ่มค่าเข้าไปได้เลย
