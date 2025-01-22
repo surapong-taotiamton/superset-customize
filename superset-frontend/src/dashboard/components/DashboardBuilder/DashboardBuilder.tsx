@@ -92,7 +92,7 @@ type DashboardBuilderProps = {};
 
 // @z-index-above-dashboard-charts + 1 = 11
 const FiltersPanel = styled.div<{ width: number; hidden: boolean }>`
-  grid-column: 1;
+  grid-column: 3;
   grid-row: 1 / span 2;
   z-index: 11;
   width: ${({ width }) => width}px;
@@ -101,6 +101,7 @@ const FiltersPanel = styled.div<{ width: number; hidden: boolean }>`
 
 const StickyPanel = styled.div<{ width: number }>`
   position: sticky;
+  right: 0
   top: -1px;
   width: ${({ width }) => width}px;
   flex: 0 0 ${({ width }) => width}px;
@@ -489,7 +490,7 @@ const DashboardBuilder: FC<DashboardBuilderProps> = () => {
 
   const draggableStyle = useMemo(
     () => ({
-      marginLeft:
+      marginRight:
         dashboardFiltersOpen ||
         editMode ||
         !nativeFiltersEnabled ||

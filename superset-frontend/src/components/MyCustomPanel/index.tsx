@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Row, Col, Button } from "antd";
 import { UserOutlined, ShopOutlined, CarOutlined } from "@ant-design/icons";
 import DynamicIcon from "src/components/DynamicIcon";
+import { Link, useHistory } from 'react-router-dom';
 interface Insight {
   title: string;
   icon: React.ReactNode;
@@ -85,6 +86,8 @@ const styles = {
 
 const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
 
+  const history = useHistory();
+
   // parser data
   let transformData: any[] = [];
   transformData = dashboardData?.map( function(obj: any) {
@@ -97,6 +100,7 @@ const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
       icon: metaDataObj?.global_chart_configuration?.customObj?.icon != undefined ? metaDataObj?.global_chart_configuration?.customObj?.icon: "Form" ,
       description: metaDataObj?.global_chart_configuration?.customObj?.description != undefined ? metaDataObj?.global_chart_configuration?.customObj?.description: "" ,
       color: metaDataObj?.global_chart_configuration?.customObj?.color != undefined ? metaDataObj?.global_chart_configuration?.customObj?.color: "#FA8C16" ,
+      url : obj.url
     }
   });
 
@@ -106,6 +110,8 @@ const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
 
   console.log(transformData);
 
+
+  
   
 
 
@@ -130,7 +136,13 @@ const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
               <h3 style={styles.cardHeader}>{insight.title}</h3>
               <p style={styles.cardDescription}>{insight.description}</p>
               <div style={styles.buttonRow}>
-                <Button type="primary" ghost>
+                <Button type="primary" ghost
+                  onClick={() => {
+                    history.push(insight.url);
+                  }
+                }
+                
+                >
                   ดูข้อมูล
                 </Button>
               </div>

@@ -45,3 +45,33 @@ superset-frontend/src/pages/Home/index.tsx
 ![](logbook-resource/2024-01-21/001.png)
 
 จะมี field ชื่อ global_chart_configuration ฟิลล์นี้เราสามารถเพิ่มค่าเข้าไปได้เลย
+
+
+### จุดรวมการ Route ทั้งหมด
+
+ตรงนี้จะเป็นจุด route ทั้งหมดของ Project frontend
+
+```sh
+superset-frontend/src/views/routes.tsx
+```
+
+
+### Dashboard Page
+
+ไฟล์เกี่ยวกับ Dashboard
+
+```
+superset-frontend/src/dashboard/containers/DashboardPage.tsx
+superset-frontend/src/dashboard/components/DashboardBuilder/DashboardBuilder.tsx
+```
+
+## 2025-01-22
+
+### Customize ตัวหน้า Dashboard
+
+ไฟล์เกี่ยวกับ NAV BAR
+
+```
+superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Vertical.tsx
+superset-frontend/src/dashboard/components/DashboardBuilder/DashboardWrapper.tsx
+```
