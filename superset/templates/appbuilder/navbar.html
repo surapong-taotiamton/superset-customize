@@ -22,7 +22,7 @@
 {% set root_path = logo_target_path if not logo_target_path.startswith('/') else '/superset' + logo_target_path if current_user.username is defined else '#'  %}
 
 {% block navbar %}
-  <div id="app-menu">
+  <div style="display: none" id="app-menu">
     <div class="navbar navbar-static-top {{menu.extra_classes}}" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">

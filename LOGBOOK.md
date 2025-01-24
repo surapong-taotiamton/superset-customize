@@ -69,9 +69,40 @@ superset-frontend/src/dashboard/components/DashboardBuilder/DashboardBuilder.tsx
 
 ### Customize ตัวหน้า Dashboard
 
-ไฟล์เกี่ยวกับ NAV BAR
+ไฟล์เกี่ยวกับ FILTER BAR
 
 ```
 superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Vertical.tsx
 superset-frontend/src/dashboard/components/DashboardBuilder/DashboardWrapper.tsx
 ```
+
+### ดูเกี่ยวกับ MENU BAR ด้านบนว่า
+
+ไฟล์ที่เกี่ยวข้อง
+
+```
+superset-frontend/src/views/menu.tsx
+superset-frontend/src/features/home/Menu.tsx
+```
+
+
+## 2025-01-23
+
+### จัด Layout หน้าเว็บทั้งหมด
+
+```
+superset-frontend/src/views/App.tsx 
+```
+
+จะมีตรงส่วน Code ด้านล่าง
+
+``` js
+const App = () => (
+  <Router>
+    <ScrollToTop />
+    <LocationPathnameLogger />
+    <RootContextProviders>
+      <GlobalStyles />
+```
+
+ตรงส่วนนี้เราสามารถปรับ Layout ทั้งหน้าได้ตามใจเรา
