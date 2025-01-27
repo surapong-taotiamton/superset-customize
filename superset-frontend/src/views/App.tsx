@@ -40,9 +40,12 @@ import { logEvent } from 'src/logger/actions';
 import { store } from 'src/views/store';
 import { RootContextProviders } from './RootContextProviders';
 import { ScrollToTop } from './ScrollToTop';
-import { Layout } from "antd";
+import { Layout, Breadcrumb , Button } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
+import { useSelector, useDispatch } from 'react-redux';
+import { changeHeader } from 'src/components/CustomHeader/actions'
+import DynamicHeader from 'src/components/CustomHeader/DynamicHeader'
 
 setupApp();
 setupPlugins();
@@ -71,6 +74,50 @@ const LocationPathnameLogger = () => {
   return <></>;
 };
 
+// const DynamicHeader = function() {
+
+//   const dataFromState: any[] = useSelector((state: any) => state.changeHeaderReducer); // ดึง state ส่วน user
+//   const dispatch = useDispatch();
+
+//   const testAdd = function() {
+//     let data = [
+//       {
+//         label: 'Home',
+//       },
+//       {
+//         label: <a href="">Application Center</a>,
+//       },
+//       {
+//         label: <a href="">Application List</a>,
+//       },
+//       {
+//         label: 'An Application',
+//       },
+//     ];
+
+//     dispatch( changeHeader(data));
+//   }
+
+//     return (
+//       <div>
+//         <Breadcrumb>
+//           {dataFromState.map( (item) => {
+//             return (<Breadcrumb.Item>
+//               {item.label}
+//             </Breadcrumb.Item>
+//             );
+//           }) }
+//       </Breadcrumb>
+
+//         <Button onClick = { testAdd } >
+//           Hello world
+//         </Button>
+//       </div>
+//     );
+// }
+
+
+
 const App = () => (
   <Router>
     <ScrollToTop />
@@ -86,7 +133,9 @@ const App = () => (
         <Header style={{ 
           padding: 0,
           backgroundColor: '#42f2f5' 
-          }} />
+          }}>
+            <DynamicHeader></DynamicHeader>
+          </Header>
         <Content style={{ margin: '0 16px' }}>
           <div
             style={{

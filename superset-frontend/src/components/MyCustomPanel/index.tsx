@@ -3,6 +3,9 @@ import { Card, Row, Col, Button } from "antd";
 import { UserOutlined, ShopOutlined, CarOutlined } from "@ant-design/icons";
 import DynamicIcon from "src/components/DynamicIcon";
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeHeader } from 'src/components/CustomHeader/actions';
+
 interface Insight {
   title: string;
   icon: React.ReactNode;
@@ -84,7 +87,31 @@ const styles = {
   }),
 };
 
+
+
 const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
+
+  const dispatch = useDispatch();
+  const callChangeHeaderByClick = function(title: string, url: string) {
+
+   
+    
+    let data = [
+      {
+        label: <a href="/superset/welcome">Home</a>
+      },
+      {
+        label: <a href="">Data Insight</a>,
+      },
+      {
+        label: <a href={url} >{title}</a>,
+      },
+    ];
+    console.log(data);
+  
+    dispatch( changeHeader(data));
+  }
+
 
   const history = useHistory();
 
@@ -110,11 +137,6 @@ const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
 
   console.log(transformData);
 
-
-  
-  
-
-
   return (
     <div style={styles.container}>
       {/* Header Section */}
@@ -139,6 +161,7 @@ const MyCustomPanel: React.FC<MyCustomPanelProps> = ({ dashboardData }) => {
                 <Button type="primary" ghost
                   onClick={() => {
                     history.push(insight.url);
+                    callChangeHeaderByClick(insight.title, insight.url);
                   }
                 }
                 

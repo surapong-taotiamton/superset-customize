@@ -115,3 +115,8 @@ const App = () => (
 
 ในส่วนของรูปต้องเอาไปวางที่ : superset-frontend/src/assets/images/
 
+
+
+### การ Share State
+
+ไฟล์หลักจะอยู่ที่ : superset-frontend/src/views/store.ts

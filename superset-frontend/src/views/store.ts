@@ -58,6 +58,9 @@ import { HydrateExplore } from 'src/explore/actions/hydrateExplore';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import { Dataset } from '@superset-ui/chart-controls';
 
+
+import changeHeaderReducer from 'src/components/CustomHeader/reducer'
+
 // Some reducers don't do anything, and redux is just used to reference the initial "state".
 // This may change later, as the client application takes on more responsibilities.
 const noopReducer =
@@ -139,6 +142,7 @@ const reducers = {
   reports,
   saveModal,
   explore,
+  changeHeaderReducer: changeHeaderReducer,
 };
 
 /* In some cases the jinja template injects two seperate React apps into basic.html
