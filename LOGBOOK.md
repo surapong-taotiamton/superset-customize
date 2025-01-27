@@ -106,3 +106,12 @@ const App = () => (
 ```
 
 ตรงส่วนนี้เราสามารถปรับ Layout ทั้งหน้าได้ตามใจเรา
+
+## 2025-01-27
+
+### Customize ตัว MetaTag
+
+ต้องทำการเพิ่มไฟล์ที่ : superset/templates/appbuilder/init.html เพื่อทำการ customize ตัว tag ใน Head
+
+ในส่วนของรูปต้องเอาไปวางที่ : superset-frontend/src/assets/images/
+
