@@ -120,3 +120,21 @@ const App = () => (
 ### การ Share State
 
 ไฟล์หลักจะอยู่ที่ : superset-frontend/src/views/store.ts
+
+
+## 2025-01-29
+
+### แก้ไข ย้าย filter จากด้านขวาไปอยู่ตรง Header
+
+superset-frontend/src/dashboard/components/nativeFilters/FilterBar
+superset-frontend/src/dashboard/components/nativeFilters/state.ts
+
+ทำการสร้าง Header : ใหม่
+
+superset-frontend/src/components/CustomPageHeaderWithActions
+
+superset-frontend/src/dashboard/components/nativeFilters/FilterBar/index.tsx
+superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Vertical.tsx
+
+
+superset-frontend/src/dashboard/components/nativeFilters/FilterBar/index.tsx --> ตรงนี้คือจุด set ค่าของ NavBar

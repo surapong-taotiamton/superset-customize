@@ -126,40 +126,40 @@ const App = () => (
       <GlobalStyles />
       
       <Layout style={{ minHeight: '100vh' }}>
-      <Sider style={{ backgroundColor: "yellow" }}>
-        <div className="demo-logo-vertical" />
-      </Sider>
-      <Layout>
-        <Header style={{ 
-          padding: 0,
-          backgroundColor: '#42f2f5' 
-          }}>
-            <DynamicHeader></DynamicHeader>
-          </Header>
-        <Content style={{ margin: '0 16px' }}>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360
-            }}
-          >
-            <Switch>
-              {routes.map(({ path, Component, props = {}, Fallback = Loading }) => (
-                <Route path={path} key={path}>
-                  <Suspense fallback={<Fallback />}>
-                    <ErrorBoundary>
-                      <Component user={bootstrapData.user} {...props} />
-                    </ErrorBoundary>
-                  </Suspense>
-                </Route>
-              ))}
-            </Switch>
-          </div>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
-      </Layout>
+        <Sider style={{ backgroundColor: "yellow" }}>
+          <div className="demo-logo-vertical" />
+        </Sider>
+        <Layout>
+          <Header style={{ 
+            padding: 0,
+            backgroundColor: '#42f2f5' 
+            }}>
+              <DynamicHeader></DynamicHeader>
+            </Header>
+          <Content style={{ margin: '0 16px' }}>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360
+              }}
+            >
+              <Switch>
+                {routes.map(({ path, Component, props = {}, Fallback = Loading }) => (
+                  <Route path={path} key={path}>
+                    <Suspense fallback={<Fallback />}>
+                      <ErrorBoundary>
+                        <Component user={bootstrapData.user} {...props} />
+                      </ErrorBoundary>
+                    </Suspense>
+                  </Route>
+                ))}
+              </Switch>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          </Footer>
+        </Layout>
     </Layout>
 
 

@@ -38,6 +38,9 @@ import Header from './Header';
 import FilterControls from './FilterControls/FilterControls';
 import CrossFiltersVertical from './CrossFilters/Vertical';
 
+import { setFilter } from 'src/components/CustomPageHeaderWithActions/actions'
+import { useSelector, useDispatch } from 'react-redux';
+
 const BarWrapper = styled.div<{ width: number }>`
   width: ${({ theme }) => theme.gridUnit * 8}px;
 
@@ -133,9 +136,22 @@ const VerticalFilterBar: React.FC<VerticalBarProps> = ({
   const [isScrolling, setIsScrolling] = useState(false);
   const timeout = useRef<any>();
 
+
+  const dispatch = useDispatch();
+  const dataFromState: any = useSelector((state: any) => state.setFilterReducer); // ดึง state
+
+  const additionToggleFilterBar = function(value: boolean) {
+    toggleFiltersBar(value)
+    dispatch(setFilter(value))
+  }
+
+  additionToggleFilterBar(dataFromState)
+  
   const openFiltersBar = useCallback(
-    () => toggleFiltersBar(true),
-    [toggleFiltersBar],
+    () => {
+      additionToggleFilterBar(true)
+    },
+    [additionToggleFilterBar],
   );
 
   const onScroll = useMemo(
@@ -203,7 +219,7 @@ const VerticalFilterBar: React.FC<VerticalBarProps> = ({
         className={cx({ open: filtersOpen })}
         width={width}
       >
-        <CollapsedBar
+        {/* <CollapsedBar
           {...getFilterBarTestId('collapsable')}
           className={cx({ open: !filtersOpen })}
           onClick={openFiltersBar}
@@ -217,9 +233,9 @@ const VerticalFilterBar: React.FC<VerticalBarProps> = ({
             {...getFilterBarTestId('filter-icon')}
             iconSize="l"
           />
-        </CollapsedBar>
+        </CollapsedBar> */}
         <Bar className={cx({ open: filtersOpen })} width={width}>
-          <Header toggleFiltersBar={toggleFiltersBar} />
+          <Header toggleFiltersBar={additionToggleFilterBar} />
           {!isInitialized ? (
             <div css={{ height }}>
               <Loading />

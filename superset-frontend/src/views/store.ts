@@ -60,6 +60,7 @@ import { Dataset } from '@superset-ui/chart-controls';
 
 
 import changeHeaderReducer from 'src/components/CustomHeader/reducer'
+import setFilterReducer from 'src/components/CustomPageHeaderWithActions/reducer.js'
 
 // Some reducers don't do anything, and redux is just used to reference the initial "state".
 // This may change later, as the client application takes on more responsibilities.
@@ -143,6 +144,7 @@ const reducers = {
   saveModal,
   explore,
   changeHeaderReducer: changeHeaderReducer,
+  setFilterReducer: setFilterReducer
 };
 
 /* In some cases the jinja template injects two seperate React apps into basic.html

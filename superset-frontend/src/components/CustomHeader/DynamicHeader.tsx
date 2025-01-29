@@ -8,24 +8,7 @@ const DynamicHeader = function() {
     const dataFromState: any[] = useSelector((state: any) => state.changeHeaderReducer); // ดึง state ส่วน user
     const dispatch = useDispatch();
   
-    const testAdd = function() {
-      let data = [
-        {
-          label: 'Home',
-        },
-        {
-          label: <a href="">Application Center</a>,
-        },
-        {
-          label: <a href="">Application List</a>,
-        },
-        {
-          label: 'An Application',
-        },
-      ];
-  
-      dispatch( changeHeader(data));
-    }
+
   
       return (
         <div>
@@ -37,10 +20,6 @@ const DynamicHeader = function() {
               );
             }) }
         </Breadcrumb>
-  
-          <Button onClick = { testAdd } >
-            Hello world
-          </Button>
         </div>
       );
 }

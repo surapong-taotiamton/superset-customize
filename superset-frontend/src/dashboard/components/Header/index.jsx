@@ -54,7 +54,7 @@ import {
 import setPeriodicRunner, {
   stopPeriodicRender,
 } from 'src/dashboard/util/setPeriodicRunner';
-import { PageHeaderWithActions } from 'src/components/PageHeaderWithActions';
+import { CustomPageHeaderWithActions } from 'src/components/CustomPageHeaderWithActions';
 import DashboardEmbedModal from '../EmbeddedModal';
 import OverwriteConfirm from '../OverwriteConfirm';
 
@@ -504,7 +504,7 @@ class Header extends React.PureComponent {
         data-test-id={dashboardInfo.id}
         className="dashboard-header-container"
       >
-        <PageHeaderWithActions
+        <CustomPageHeaderWithActions
           editableTitleProps={{
             title: dashboardTitle,
             canEdit: userCanEdit && editMode,
