@@ -124,6 +124,13 @@ const RowLevelSecurityList = lazy(
     ),
 );
 
+const TestView = lazy(
+  () =>
+    import(
+      'src/pages/TestView'
+    ),
+)
+
 type Routes = {
   path: string;
   Component: React.ComponentType;
@@ -226,6 +233,11 @@ export const routes: Routes = [
     path: '/sqllab/',
     Component: SqlLab,
   },
+  {
+    path: '/superset/dynamic/test-view',
+    Component: TestView
+  }
+
 ];
 
 if (isFeatureEnabled(FeatureFlag.TaggingSystem)) {

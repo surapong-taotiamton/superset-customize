@@ -930,3 +930,48 @@ class Superset(BaseSupersetView):
     @deprecated(new_target="/sqllab/history")
     def sqllab_history(self) -> FlaskResponse:
         return redirect("/sqllab/history")
+
+
+    @event_logger.log_this
+    @expose("/wasinee/")
+    def wasinee(self) -> FlaskResponse:
+        """Personalized welcome page"""
+        if not g.user or not get_user_id():
+            if conf["PUBLIC_ROLE_LIKE"]:
+                return self.render_template("superset/public_welcome.html")
+            return redirect(appbuilder.get_url_for_login)
+
+        payload = {
+            "user": bootstrap_user_data(g.user, include_perms=True),
+            "common": common_bootstrap_payload(),
+        }
+
+        return self.render_template(
+            "superset/spa.html",
+            entry="spa",
+            bootstrap_data=json.dumps(
+                payload, default=utils.pessimistic_json_iso_dttm_ser
+            ),
+        )
+
+    @event_logger.log_this
+    @expose("/dynamic/<path:subpath>")
+    def dynamic(self, subpath) -> FlaskResponse:
+        """Personalized welcome page"""
+        if not g.user or not get_user_id():
+            if conf["PUBLIC_ROLE_LIKE"]:
+                return self.render_template("superset/public_welcome.html")
+            return redirect(appbuilder.get_url_for_login)
+
+        payload = {
+            "user": bootstrap_user_data(g.user, include_perms=True),
+            "common": common_bootstrap_payload(),
+        }
+
+        return self.render_template(
+            "superset/spa.html",
+            entry="spa",
+            bootstrap_data=json.dumps(
+                payload, default=utils.pessimistic_json_iso_dttm_ser
+            ),
+        )

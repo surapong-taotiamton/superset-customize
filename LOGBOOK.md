@@ -138,3 +138,37 @@ superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Vertical.tsx
 
 
 superset-frontend/src/dashboard/components/nativeFilters/FilterBar/index.tsx --> ตรงนี้คือจุด set ค่าของ NavBar
+
+
+## 2025-01-30
+
+### เพิ่ม Route Backend เข้า superset เพื่อใช้กับ route ที่ frontend ให้สามารถ Refresh ได้
+
+ถ้าเราเพิ่ม route ที่ Fronend อย่างเดียวเราจะไม่สามารถ Refresh route ของ frontend ได้เพราะตอน render ตัว supert จะไปถาม backend ให้ทำ template rendering ก่อนแล้วค่อยให้หน้าบ้านมาทำการ Render ส่วน fronend ดังนั้นเราต้องทำการเพิ่มส่วนที่ Backend ด้วย
+
+ให้ไปเพิ่มที่ไฟล์ : /config/workspace/superset/superset/views/core.py
+
+ตัวอย่างด้านล่าง ทำการเพิ่ม path : /dynamic/* ให้กับ backend ให้ทำการ render หน้า base ของ superset ที่รอให้ frontend เอาไป Render ได้
+```python
+@event_logger.log_this
+@expose("/dynamic/<path:subpath>")
+def dynamic(self, subpath) -> FlaskResponse:
+    """Personalized welcome page"""
+    if not g.user or not get_user_id():
+        if conf["PUBLIC_ROLE_LIKE"]:
+            return self.render_template("superset/public_welcome.html")
+        return redirect(appbuilder.get_url_for_login)
+
+    payload = {
+        "user": bootstrap_user_data(g.user, include_perms=True),
+        "common": common_bootstrap_payload(),
+    }
+
+    return self.render_template(
+        "superset/spa.html",
+        entry="spa",
+        bootstrap_data=json.dumps(
+            payload, default=utils.pessimistic_json_iso_dttm_ser
+        ),
+    )
+```

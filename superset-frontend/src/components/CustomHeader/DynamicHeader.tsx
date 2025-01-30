@@ -1,14 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Layout, Breadcrumb , Button } from "antd";
 import { changeHeader } from './actions';
-
+import { Link, useHistory } from 'react-router-dom';
 
 const DynamicHeader = function() {
 
+    const history = useHistory();
     const dataFromState: any[] = useSelector((state: any) => state.changeHeaderReducer); // ดึง state ส่วน user
     const dispatch = useDispatch();
-  
-
+    
+    const changePage = function() {
+      history.push("/superset/dynamic/test-view");
+    }
   
       return (
         <div>
@@ -20,6 +23,9 @@ const DynamicHeader = function() {
               );
             }) }
         </Breadcrumb>
+        <Button onClick={changePage} >
+          TEST
+        </Button>
         </div>
       );
 }
